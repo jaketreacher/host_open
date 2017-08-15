@@ -2,7 +2,7 @@ import argparse
 import logging
 
 # Arbitrary number
-default_port = 17001
+default_port = 12355
 
 def convert2level(arg):
     """ Convert the 'level' obtained from the command line
