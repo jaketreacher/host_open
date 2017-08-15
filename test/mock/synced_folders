@@ -1,0 +1,16 @@
+{
+    "virtualbox": {
+        "/.vagrant_info": {
+            "guestpath": "/.vagrant_info",
+            "hostpath": "/Users/Jake/Programming/vagrant/ubuntu/.vagrant/machines/default/virtualbox",
+            "disabled": false,
+            "__vagrantfile": true
+        },
+        "/home/ubuntu/Programming/code": {
+            "guestpath": "/home/ubuntu/Programming/code",
+            "hostpath": "/Users/Jake/Programming/code",
+            "disabled": false,
+            "__vagrantfile": true
+        }
+    }
+}
