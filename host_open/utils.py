@@ -1,10 +1,16 @@
 import logging
+import pickle
 
 def init_logger(level):
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=level,
         format='%(name)-12s: %(levelname)-8s %(message)s',
-        datefmt='%m-%d %H:%M',
-        filename='debug.log',
-        filemode='w'
     )
+
+def pack_data(filepaths, flags):
+    data = (filepaths, flags)
+    return pickle.dumps(data)
+
+def unpack_data(data):
+    filepaths, flags = pickle.loads(data)
+    return filepaths, flags
