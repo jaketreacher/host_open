@@ -51,6 +51,7 @@ def transmit_data(data, port):
         clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         clientsocket.connect(('localhost', port))
         clientsocket.send(data)
+        clientsocket.close()
         return True
     except ConnectionRefusedError:
         pass
