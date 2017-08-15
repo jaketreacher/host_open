@@ -7,10 +7,10 @@ def init_logger(level):
         format='%(name)-12s: %(levelname)-8s %(message)s',
     )
 
-def pack_data(filepaths, alt_app):
-    data = (filepaths, alt_app)
+def pack_data(filepaths):
+    data = (filepaths)
     return pickle.dumps(data)
 
 def unpack_data(data):
-    filepaths, alt_app = pickle.loads(data)
-    return filepaths, alt_app
+    filepaths = pickle.loads(data)
+    return filepaths
