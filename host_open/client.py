@@ -57,11 +57,23 @@ def transmit_data(data, port):
         pass
 
 def convert_filepaths(filepaths, folders):
+    """ Convert files from the VM filepath to the host filepath
+
+    Args:
+        filepaths[<str>]: files to send
+        folders<(guestpath, hostpath)>: conversion 'table'
+
+    Returns:
+        [<str>]: converted files - to send
+        [<str>]: invalid files - to print
+    """
     def s_length(item):
         return len(item[0])
 
+    # Reverse sort by length of guestpath (first arg)
     folders = sorted(folders, key=s_length, reverse = True)
 
+    # Convert Files
     converted_files = []
     invalid_files = []
     for path in filepaths:
@@ -77,27 +89,28 @@ def convert_filepaths(filepaths, folders):
         if not success:
             invalid_files.append(path)
 
+    converted_files = list(set(converted_files))
+    invalid_files = list(set(invalid_files))
     return converted_files, invalid_files
 
-def parse_cmd_args():
-    return logging.DEBUG, 12345, sys.argv[1:]
+def main():
+    # Parse Args
+    level, port, filepaths = parse_client(sys.argv[1:])
 
-
-if __name__ == '__main__':
-    level, port, filepaths, flags = parse_client(sys.argv[1:])
-
+    # Setup Logger
     utils.init_logger(level)
     logger = logging.getLogger(__name__)
 
-    logger.info('Port: %d' % port)
-    logger.info('Files: %s' % ', '.join(filepaths))
+    logger.debug('Port: %d' % port)
+    logger.debug('Files: %s' % ', '.join(filepaths))
 
+    # Get files and convert
     folders = get_synced_folders()
-
     converted_files, invalid_files = convert_filepaths(filepaths, folders)
 
+    # Send data
     if converted_files:
-        data = utils.pack_data(converted_files, None)
+        data = utils.pack_data(converted_files)
         success = transmit_data(data, port)
 
         if success:
@@ -111,3 +124,7 @@ if __name__ == '__main__':
             logging.warning('  vagrant ssh -- -R <port>:localhost:<port>')
     else:
         logger.warning('No valid files selected.')
+
+
+if __name__ == '__main__':
+    main()
