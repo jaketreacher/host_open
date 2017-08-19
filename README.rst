@@ -57,7 +57,7 @@ Client
 
     hostopen file.py directory
 
-Will make the server open `file.py` and `directory` if they are inside of a synced folder.
+Will make the server open ``file.py`` and ``directory`` if they are inside of a synced folder.
 
 Server
 ~~~~~~
@@ -65,7 +65,7 @@ Server
 
     hostopen-server subl
 
-Filepaths received will be opened with sublime. `subl` can be substitued for a different program.
+Filepaths received will be opened with sublime. ``subl`` can be substitued for a different program.
 
 
 License
