@@ -1,8 +1,8 @@
 import pytest
 import json
 import os
-from host_open import client
-from host_open import arg_handler
+from hostopen import client
+from hostopen import arg_handler
 
 def mock_path(file):
     """ Gets files within the <project>/test/mock directory

@@ -1,11 +1,11 @@
-from host_open.arg_handler import parse_client
+from hostopen.arg_handler import parse_client
 import json
 import logging
 import os
 import socket
 import sys
 
-from host_open import utils
+from hostopen import utils
 
 def get_synced_folders():
     """ Reads the appropriate file to get the synced_folder

@@ -3,8 +3,8 @@ import socket
 import subprocess
 import sys
 
-from host_open import utils
-from host_open.arg_handler import parse_server
+from hostopen import utils
+from hostopen.arg_handler import parse_server
 
 def open_all(filepaths, app):
     """ Open all files with the specified application
